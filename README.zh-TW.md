@@ -1,16 +1,17 @@
-# 🌙 枕邊偵探社 Pillow Detective
+# 🎧 有聲書自己做 DIY Audiobook
 
-**一句話，把任何公版故事做成多角色睡前廣播劇。給 Claude Code 用的 skill。**
+**一句話，把任何公版書做成多角色有聲書或睡前廣播劇。給 Claude Code 用的 skill。**
 
-> 「今晚做一集：〈紅髮會〉，繁體中文。」
+> 「把〈紅髮會〉做成繁體中文有聲書，每個角色不同聲音。」
 
-你會拿到一集做好的節目：翻譯完成、每個角色有自己的聲音、講話時自動壓低的輕音樂、串流平台標準響度、字幕、章節、上架文案。
+你會拿到一集做好的成品：需要的話先翻譯、每個角色有自己的聲音、可選講話時自動壓低的輕音樂、串流平台標準響度、字幕、章節、上架文案。
+內建免費語音就能做；想要更像真人演出，再接 MiniMax 或 OpenAI 的付費語音。
 
 [English](README.md) · [繁體中文](README.zh-TW.md)
 
 🎧 **先聽聽看**（全部由這個 repo 產生，用免費語音、不需要任何 API key）：[繁體中文〈紅髮會〉](examples/red-headed-league/demo-first-90s.m4a)·[English *The Speckled Band*](examples/speckled-band/demo-first-90s.m4a)
 
-這是 YouTube 頻道 **[枕邊偵探社](https://youtube.com/@PillowMysteries)** 背後的量產線：福爾摩斯、江戶川亂步、布朗神父等經典推理，做成睡前廣播劇，已經做了將近 200 集。這裡的每個預設值（語速、停頓、響度、配樂要多小聲）都是在這些集數裡一集一集用耳朵調出來的。
+它原本是 YouTube 頻道 **[枕邊偵探社](https://youtube.com/@PillowMysteries)** 背後的量產線：福爾摩斯、江戶川亂步、布朗神父等經典推理，做成睡前廣播劇，已經做了將近 200 集。這裡的每個預設值（語速、停頓、響度、配樂要多小聲）都是在這些集數裡一集一集用耳朵調出來的。
 
 ---
 
@@ -31,14 +32,16 @@
 **需要：**[Claude Code](https://claude.com/claude-code)、Python 3.9 以上、ffmpeg。
 
 ```bash
-git clone https://github.com/mickyyang-1407/pillow-detective ~/.claude/skills/pillow-detective
+git clone https://github.com/mickyyang-1407/diy-audiobook ~/.claude/skills/diy-audiobook
 pip install edge-tts            # 免費語音、不用 key
 brew install ffmpeg             # 或 apt install ffmpeg
 ```
 
 然後在 Claude Code 裡說：
 
-> 用枕邊偵探社的流程，把〈藍寶石〉做成一集繁體中文睡前廣播劇。
+> 把〈藍寶石〉做成繁體中文有聲書，每個角色不同聲音。
+
+> 把〈藍寶石〉做成睡前廣播劇，慢一點、輕一點、加配樂。
 
 > 把安徒生〈賣火柴的小女孩〉做成給小朋友聽的十分鐘睡前故事。
 
@@ -61,6 +64,12 @@ brew install ffmpeg             # 或 apt install ffmpeg
 | `edge`（預設） | 免費 | 試用、英文、多語言 | `pip install edge-tts` |
 | `minimax` | 付費 | 最自然的中文演出 | `export MINIMAX_API_KEY=…` |
 | `openai` | 付費 | 任何語言，可用文字指示演技 | `export OPENAI_API_KEY=…` |
+
+**沒用過 API？**一步一步的教學：[docs/API.zh-TW.md](docs/API.zh-TW.md)（[English](docs/API.md)）。
+一行測試你的 key 能不能用：`python3 scripts/try_voice.py minimax "Chinese (Mandarin)_Gentleman" "你好"`
+
+**兩種風格**：`bedtime`（預設，慢、停頓長、輕聲）或 `audiobook`（正常語速）。
+`fetch.py … --style audiobook`，或直接跟 Claude 說你要哪一種。
 
 角色可以從**聲音池**（`man_old` 老紳士、`woman_young` 年輕小姐、`boy` 男孩……）自動分配，也可以手選。每個聲音都會自動對齊旁白音量，半夜一點不會有人需要去調音量。
 

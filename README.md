@@ -1,11 +1,13 @@
-# 🌙 Pillow Detective
+# 🎧 DIY Audiobook · 有聲書自己做
 
-**Turn any public-domain story into a multi-voice bedtime radio drama — with one sentence to Claude Code.**
+**Make your own multi-voice audiobook or bedtime radio drama from any public-domain book — with one sentence
+to Claude Code.**
 
-> "Make tonight's episode: *The Red-Headed League*, in Traditional Chinese."
+> "Make an audiobook of *The Red-Headed League* in Traditional Chinese, every character with their own voice."
 
-…and you get a finished episode: translated, every character in their own voice, a soft music bed that ducks
-under the dialogue, mastered to streaming loudness, with subtitles, chapters and upload text.
+…and you get a finished episode: translated if needed, every character in their own voice, an optional music
+bed that ducks under the dialogue, mastered to streaming loudness, with subtitles, chapters and upload text.
+Free voices out of the box; plug in MiniMax or OpenAI when you want studio-grade acting.
 
 [English](README.md) · [繁體中文](README.zh-TW.md)
 
@@ -13,7 +15,7 @@ under the dialogue, mastered to streaming loudness, with subtitles, chapters and
 [English · *The Speckled Band*](examples/speckled-band/demo-first-90s.m4a) ·
 [繁體中文 · 〈紅髮會〉](examples/red-headed-league/demo-first-90s.m4a)
 
-This is the production line behind **[枕邊偵探社 (Pillow Detective Agency)](https://youtube.com/@PillowMysteries)**,
+It started as the production line behind **[枕邊偵探社 (Pillow Detective Agency)](https://youtube.com/@PillowMysteries)**,
 a YouTube channel of Sherlock Holmes and other classic mysteries as bedtime radio dramas — nearly 200 episodes produced.
 Every default here (pacing, gaps, loudness, how loud the music sits) was tuned by ear over those episodes.
 
@@ -39,16 +41,18 @@ loudness, trimming silence, ducking music. Nothing reaches the TTS engine until 
 **Requirements:** [Claude Code](https://claude.com/claude-code), Python 3.9+, ffmpeg.
 
 ```bash
-git clone https://github.com/mickyyang-1407/pillow-detective ~/.claude/skills/pillow-detective
+git clone https://github.com/mickyyang-1407/diy-audiobook ~/.claude/skills/diy-audiobook
 pip install edge-tts            # free voices, no key
 brew install ffmpeg             # or: apt install ffmpeg
 ```
 
 Then in Claude Code:
 
-> Make a bedtime radio drama of "The Speckled Band" in English.
+> Make an audiobook of "The Speckled Band" in English.
 
-> 用枕邊偵探社的流程，把〈藍寶石〉做成一集繁體中文睡前廣播劇。
+> Make a bedtime radio drama of "The Speckled Band" — slow and soft, with music.
+
+> 把〈藍寶石〉做成繁體中文有聲書，每個角色不同聲音。
 
 > Turn Andersen's "The Little Match Girl" into a 10-minute bedtime story for kids, Japanese.
 
@@ -82,6 +86,12 @@ python3 scripts/selftest.py                      # offline: quote parsing, casti
 | `minimax` | paid | the most natural Mandarin acting | `export MINIMAX_API_KEY=…` |
 | `openai` | paid | any language; acting via text instructions | `export OPENAI_API_KEY=…` |
 
+**New to APIs?** Step-by-step guide: [docs/API.md](docs/API.md) · [中文教學](docs/API.zh-TW.md).
+Check your key with one sentence: `python3 scripts/try_voice.py minimax "Chinese (Mandarin)_Gentleman" "你好"`.
+
+**Two styles:** `bedtime` (default — slow, long pauses, soft) or `audiobook` (natural pace):
+`fetch.py … --style audiobook`, or just tell Claude which one you want.
+
 Characters get voices from **pools** (`man_old`, `woman_young`, `boy`…) or you hand-pick them.
 Every voice is automatically levelled to the narrator, so nobody reaches for the volume knob at 1 a.m.
 
@@ -108,7 +118,8 @@ Music you add must be yours or licensed for it.
 
 ```
 SKILL.md              the instructions Claude Code follows
-scripts/              fetch · check · synth · mix · qc · package (stdlib + ffmpeg; edge-tts for free voices)
+docs/                 API setup guides (English, 中文)
+scripts/              fetch · check · synth · mix · qc · package · try_voice · selftest
 voices/               voice pools per backend and language
 references/           translation guide · speaker tagging rules · lessons from nearly 200 episodes
 examples/             two complete episode folders (English, 繁體中文) you can run as-is

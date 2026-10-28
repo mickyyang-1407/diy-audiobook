@@ -3,7 +3,7 @@
   edge     — Microsoft Edge online voices via the `edge-tts` package. Free, no key. Default.
   minimax  — MiniMax T2A (best Mandarin drama voices). Needs MINIMAX_API_KEY.
              MINIMAX_API_HOST defaults to https://api.minimax.io (mainland accounts: https://api.minimaxi.com).
-  openai   — OpenAI gpt-4o-mini-tts. Needs OPENAI_API_KEY.
+  openai   — OpenAI gpt-4o-mini-tts. Needs OPENAI_API_KEY (OPENAI_BASE_URL for a compatible endpoint).
 
 A voice setting is what cast.json gives a role: {"voice": "…", plus backend options}.
   edge:    rate ("-10%"), pitch ("+0Hz"), volume ("+0%")
@@ -99,7 +99,8 @@ def openai(text, v, out):
         body["speed"] = v["speed"]
     for attempt in range(6):
         try:
-            raw, _ = _post("https://api.openai.com/v1/audio/speech", body,
+            base = os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1").rstrip("/")
+            raw, _ = _post(f"{base}/audio/speech", body,
                            {"Authorization": f"Bearer {_key('OPENAI_API_KEY')}"})
             out.write_bytes(raw)
             return out

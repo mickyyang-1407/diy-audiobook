@@ -23,7 +23,7 @@ GUTENBERG = "https://www.gutenberg.org/cache/epub/{n}/pg{n}.txt"
 
 
 def get(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "pillow-detective/1.0 (+https://github.com/mickyyang-1407/pillow-detective)"})
+    req = urllib.request.Request(url, headers={"User-Agent": "diy-audiobook/1.0 (+https://github.com/mickyyang-1407/diy-audiobook)"})
     with urllib.request.urlopen(req, timeout=60) as r:
         return r.read().decode("utf-8-sig", errors="replace")
 
@@ -72,6 +72,8 @@ def main():
     ap.add_argument("--start"); ap.add_argument("--end")
     ap.add_argument("--title", default=""); ap.add_argument("--author", default="")
     ap.add_argument("--language", default="zh-TW", help="language of the finished drama (BCP-47)")
+    ap.add_argument("--style", choices=["bedtime", "audiobook"], default="bedtime",
+                    help="bedtime = slow, long pauses (default); audiobook = natural pace")
     ap.add_argument("--max-paragraphs", type=int, default=0, help="keep only the first N (for a short demo)")
     a = ap.parse_args()
 
@@ -94,6 +96,9 @@ def main():
     cfg = load(cfg_path, {}) if cfg_path.exists() else {}
     template = load(Path(__file__).resolve().parent.parent / "templates/episode.json")
     cfg = {**template, **cfg, "source_url": url, "language": cfg.get("language", a.language)}
+    if a.style == "audiobook":
+        cfg["style"] = "audiobook"
+        cfg["gaps"] = {**cfg["gaps"], "paragraph": 0.9, "scene": 2.5, "after_intro": 1.5, "before_outro": 2.0}
     if a.title:
         cfg["title"] = a.title
     if a.author:

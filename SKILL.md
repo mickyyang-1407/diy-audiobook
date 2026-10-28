@@ -1,9 +1,9 @@
 ---
-name: pillow-detective
-description: Turn a public-domain story (Sherlock Holmes, fairy tales, classics — any language) into a finished multi-voice bedtime radio drama — translated or adapted, every character with their own voice, music bed, mastered loudness, subtitles, chapters and upload text. Use when the user asks for a bedtime story, sleep story, audio drama, radio play, multi-voice audiobook, 睡前故事, 廣播劇, 有聲書, or "make an episode" of a story channel.
+name: diy-audiobook
+description: Make a finished multi-voice audiobook or bedtime radio drama from a public-domain book (Sherlock Holmes, fairy tales, classics — any language) — translated or adapted, every character with their own voice, optional music bed, mastered loudness, subtitles, chapters and upload text. Free voices by default; MiniMax or OpenAI voices with an API key. Use when the user asks for an audiobook, bedtime story, sleep story, audio drama, radio play, 有聲書, 睡前故事, 廣播劇, or "make an episode" of a story channel.
 ---
 
-# Pillow Detective · bedtime radio drama production line
+# DIY Audiobook · 有聲書自己做
 
 You (the agent) are the translator, script editor and casting director; the scripts in `scripts/` do the
 deterministic work (download, validation, TTS, mixing, loudness, QC). This split came out of producing nearly 200
@@ -18,7 +18,9 @@ scripts check everything you write before any paid TTS call is made.
 ffmpeg -version >/dev/null && python3 -c "import edge_tts" || pip install edge-tts   # ffmpeg: brew/apt install ffmpeg
 ```
 Backends: `edge` (free, default), `minimax` (`MINIMAX_API_KEY`, best Mandarin acting), `openai`
-(`OPENAI_API_KEY`). Keys only ever come from the environment — never write them into episode files.
+(`OPENAI_API_KEY`). Keys only ever come from the environment — never write them into episode files, and never
+ask the user to paste a key into the chat. If they want a paid backend and the key is missing, point them to
+`docs/API.zh-TW.md` / `docs/API.md` and have them run `scripts/try_voice.py` themselves.
 
 ## 1. Pick a story — copyright first
 
@@ -35,7 +37,9 @@ python3 $SKILL_DIR/scripts/fetch.py episodes/01-red-headed-league --gutenberg 16
   --start "II. THE RED-HEADED LEAGUE" --end "III. A CASE OF IDENTITY" \
   --title "紅髮會" --author "柯南·道爾" --language zh-TW
 ```
-Also `--url` or `--file`. Then fill `episode.json`: `intro` / `outro` (a fixed greeting makes it a show —
+Also `--url` or `--file`. `--style audiobook` = natural pace and shorter pauses; the default `bedtime` is slow
+and soft — pick from what the user asked for ("audiobook" vs "bedtime story / sleep / radio drama").
+Then fill `episode.json`: `intro` / `outro` (a fixed greeting makes it a show —
 e.g. 「晚安，歡迎來到枕邊偵探社……」), `show`, `backend`, optional `music` and `image` paths.
 
 ## 3. Translate / adapt → `script/script.json`

@@ -48,7 +48,7 @@ def main():
     lines += ["原著為公有領域作品" + (f"：{src}" if src.startswith("http") else "") if zh
               else "Original text in the public domain" + (f": {src}" if src.startswith("http") else ""),
               ("語音：" if zh else "Voices: ") + CREDIT.get(cfg["backend"], cfg["backend"]),
-              ("製作流程：" if zh else "Made with ") + "pillow-detective (Claude Code skill)"]
+              ("製作流程：" if zh else "Made with ") + "diy-audiobook (Claude Code skill)"]
     out = ep.build / "description.md"
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"{out}" + ("" if ok else "  (fewer than 3 usable chapters — YouTube will not show chapters)"))

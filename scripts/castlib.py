@@ -6,14 +6,17 @@ class CastError(Exception):
     pass
 
 
-def preset(backend, language):
+def preset(backend, language, style="bedtime"):
     p = load(ROOT / "voices" / f"{backend}.json")
     lang = language.split("-")[0].lower()
     block = p.get(lang) or p.get("any")
+    defaults = p.get("defaults", {})
+    if style == "audiobook":
+        defaults = {**defaults, **p.get("audiobook_defaults", {})}
     if not block:
         raise CastError(f"voices/{backend}.json has no preset for {language!r}; add one, or name every voice in "
                         f"cast.json explicitly")
-    return p.get("defaults", {}), block
+    return defaults, block
 
 
 def roles_in(speakers):
@@ -36,7 +39,7 @@ def resolve(cfg, speakers, cast):
          "pool:man_mid"         first free voice of that pool in voices/<backend>.json
          "same:narrator"        share another role's voice (e.g. a first-person narrator who also speaks)
        narrator falls back to the preset's narrator."""
-    defaults, block = preset(cfg["backend"], cfg["language"])
+    defaults, block = preset(cfg["backend"], cfg["language"], cfg.get("style", "bedtime"))
     pools = block.get("pools", {})
     out, aliases = {}, {}
     wanted = {"narrator"} | roles_in(speakers) | set(cast)
