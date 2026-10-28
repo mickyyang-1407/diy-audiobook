@@ -1,0 +1,18 @@
+{
+ "_doc": "MiniMax system voices for Mandarin bedtime drama. speed 0.85 + emotion calm for the narrator and lead is what a 200-episode run settled on; side characters get no emotion (it over-acts).",
+ "defaults": {"speed": 0.85},
+ "zh": {
+  "narrator": {"voice": "Chinese (Mandarin)_Gentleman", "emotion": "calm"},
+  "pools": {
+   "man_mid": [{"voice": "Chinese (Mandarin)_Male_Announcer"}, {"voice": "Chinese (Mandarin)_Sincere_Adult"}, {"voice": "male-qn-jingying-jingpin"}, {"voice": "male-qn-badao-jingpin"}, {"voice": "Chinese (Mandarin)_Lyrical_Voice"}, {"voice": "Chinese (Mandarin)_Radio_Host"}, {"voice": "Chinese (Mandarin)_News_Anchor"}, {"voice": "Chinese (Mandarin)_Stubborn_Friend"}],
+   "man_young": [{"voice": "Chinese (Mandarin)_Gentle_Youth"}, {"voice": "male-qn-qingse-jingpin"}, {"voice": "Chinese (Mandarin)_Unrestrained_Young_Man"}, {"voice": "male-qn-daxuesheng-jingpin"}, {"voice": "junlang_nanyou"}],
+   "man_old": [{"voice": "Chinese (Mandarin)_Humorous_Elder"}, {"voice": "Chinese (Mandarin)_Male_Announcer"}, {"voice": "Chinese (Mandarin)_Lyrical_Voice"}, {"voice": "Chinese (Mandarin)_News_Anchor"}],
+   "man_rough": [{"voice": "Chinese (Mandarin)_Southern_Young_Man"}, {"voice": "Chinese (Mandarin)_Unrestrained_Young_Man"}, {"voice": "badao_shaoye"}, {"voice": "lengdan_xiongzhang"}],
+   "woman_young": [{"voice": "Chinese (Mandarin)_Sweet_Lady"}, {"voice": "Chinese (Mandarin)_Warm_Girl"}, {"voice": "Chinese (Mandarin)_Crisp_Girl"}, {"voice": "Chinese (Mandarin)_Soft_Girl"}, {"voice": "female-shaonv-jingpin"}],
+   "woman_mid": [{"voice": "Chinese (Mandarin)_Wise_Women"}, {"voice": "Chinese (Mandarin)_Mature_Woman"}, {"voice": "female-chengshu-jingpin"}, {"voice": "female-yujie-jingpin"}, {"voice": "Chinese (Mandarin)_Warm_Bestie"}],
+   "woman_old": [{"voice": "Chinese (Mandarin)_Kind-hearted_Elder"}, {"voice": "Chinese (Mandarin)_Kind-hearted_Antie"}, {"voice": "Chinese (Mandarin)_Wise_Women"}],
+   "boy": [{"voice": "clever_boy"}, {"voice": "Chinese (Mandarin)_Straightforward_Boy"}, {"voice": "Chinese (Mandarin)_Pure-hearted_Boy"}],
+   "girl": [{"voice": "lovely_girl"}, {"voice": "Chinese (Mandarin)_Crisp_Girl"}]
+  }
+ }
+}

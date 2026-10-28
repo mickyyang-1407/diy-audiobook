@@ -1,0 +1,262 @@
+{
+ "_doc": "Free Microsoft Edge voices (edge-tts). Mandarin has few voices, so pools reuse a voice at a different pitch — each (voice, pitch) pair counts as a separate character, and a base voice nobody is using yet is always picked first. zh-TW-YunJheNeural returns no audio as of 2026-10 and is left out. List every voice: edge-tts --list-voices",
+ "defaults": {
+  "rate": "-10%"
+ },
+ "zh": {
+  "narrator": {
+   "voice": "zh-CN-YunyangNeural",
+   "rate": "-12%"
+  },
+  "pools": {
+   "man_mid": [
+    {
+     "voice": "zh-CN-YunjianNeural",
+     "rate": "-15%"
+    },
+    {
+     "voice": "zh-CN-YunyangNeural",
+     "pitch": "-6Hz"
+    },
+    {
+     "voice": "zh-CN-YunxiNeural",
+     "pitch": "-8Hz"
+    }
+   ],
+   "man_young": [
+    {
+     "voice": "zh-CN-YunxiNeural"
+    },
+    {
+     "voice": "zh-CN-YunxiNeural",
+     "pitch": "-5Hz"
+    }
+   ],
+   "man_old": [
+    {
+     "voice": "zh-CN-YunyangNeural",
+     "pitch": "-10Hz",
+     "rate": "-18%"
+    },
+    {
+     "voice": "zh-CN-YunjianNeural",
+     "pitch": "-12Hz",
+     "rate": "-20%"
+    }
+   ],
+   "man_rough": [
+    {
+     "voice": "zh-CN-YunjianNeural"
+    },
+    {
+     "voice": "zh-CN-YunjianNeural",
+     "pitch": "-8Hz"
+    }
+   ],
+   "woman_young": [
+    {
+     "voice": "zh-TW-HsiaoYuNeural"
+    },
+    {
+     "voice": "zh-CN-XiaoyiNeural"
+    }
+   ],
+   "woman_mid": [
+    {
+     "voice": "zh-TW-HsiaoChenNeural"
+    },
+    {
+     "voice": "zh-CN-XiaoxiaoNeural"
+    }
+   ],
+   "woman_old": [
+    {
+     "voice": "zh-CN-XiaoxiaoNeural",
+     "pitch": "-10Hz",
+     "rate": "-18%"
+    },
+    {
+     "voice": "zh-TW-HsiaoChenNeural",
+     "pitch": "-12Hz",
+     "rate": "-18%"
+    }
+   ],
+   "boy": [
+    {
+     "voice": "zh-CN-YunxiaNeural"
+    }
+   ],
+   "girl": [
+    {
+     "voice": "zh-CN-XiaoyiNeural",
+     "pitch": "+6Hz"
+    }
+   ]
+  }
+ },
+ "en": {
+  "narrator": {
+   "voice": "en-GB-RyanNeural",
+   "rate": "-12%"
+  },
+  "pools": {
+   "man_mid": [
+    {
+     "voice": "en-GB-ThomasNeural"
+    },
+    {
+     "voice": "en-US-AndrewNeural"
+    },
+    {
+     "voice": "en-US-ChristopherNeural"
+    },
+    {
+     "voice": "en-US-EricNeural"
+    }
+   ],
+   "man_young": [
+    {
+     "voice": "en-US-BrianNeural"
+    },
+    {
+     "voice": "en-US-RogerNeural"
+    },
+    {
+     "voice": "en-US-SteffanNeural"
+    }
+   ],
+   "man_old": [
+    {
+     "voice": "en-US-GuyNeural",
+     "pitch": "-8Hz",
+     "rate": "-15%"
+    },
+    {
+     "voice": "en-GB-ThomasNeural",
+     "pitch": "-10Hz",
+     "rate": "-15%"
+    }
+   ],
+   "man_rough": [
+    {
+     "voice": "en-US-GuyNeural"
+    },
+    {
+     "voice": "en-US-EricNeural",
+     "pitch": "-6Hz"
+    }
+   ],
+   "woman_young": [
+    {
+     "voice": "en-GB-MaisieNeural"
+    },
+    {
+     "voice": "en-US-EmmaNeural"
+    },
+    {
+     "voice": "en-US-AriaNeural"
+    }
+   ],
+   "woman_mid": [
+    {
+     "voice": "en-GB-SoniaNeural"
+    },
+    {
+     "voice": "en-US-AvaNeural"
+    },
+    {
+     "voice": "en-US-JennyNeural"
+    },
+    {
+     "voice": "en-US-MichelleNeural"
+    }
+   ],
+   "woman_old": [
+    {
+     "voice": "en-GB-LibbyNeural",
+     "pitch": "-10Hz",
+     "rate": "-15%"
+    },
+    {
+     "voice": "en-US-JennyNeural",
+     "pitch": "-12Hz",
+     "rate": "-15%"
+    }
+   ],
+   "boy": [
+    {
+     "voice": "en-US-AnaNeural",
+     "pitch": "-6Hz"
+    }
+   ],
+   "girl": [
+    {
+     "voice": "en-US-AnaNeural"
+    }
+   ]
+  }
+ },
+ "ja": {
+  "narrator": {
+   "voice": "ja-JP-KeitaNeural",
+   "rate": "-12%"
+  },
+  "pools": {
+   "man_mid": [
+    {
+     "voice": "ja-JP-KeitaNeural",
+     "pitch": "-6Hz"
+    }
+   ],
+   "man_young": [
+    {
+     "voice": "ja-JP-KeitaNeural",
+     "pitch": "+4Hz"
+    }
+   ],
+   "man_old": [
+    {
+     "voice": "ja-JP-KeitaNeural",
+     "pitch": "-12Hz",
+     "rate": "-18%"
+    }
+   ],
+   "man_rough": [
+    {
+     "voice": "ja-JP-KeitaNeural",
+     "pitch": "-9Hz"
+    }
+   ],
+   "woman_young": [
+    {
+     "voice": "ja-JP-NanamiNeural"
+    }
+   ],
+   "woman_mid": [
+    {
+     "voice": "ja-JP-NanamiNeural",
+     "pitch": "-5Hz"
+    }
+   ],
+   "woman_old": [
+    {
+     "voice": "ja-JP-NanamiNeural",
+     "pitch": "-12Hz",
+     "rate": "-18%"
+    }
+   ],
+   "boy": [
+    {
+     "voice": "ja-JP-NanamiNeural",
+     "pitch": "-10Hz"
+    }
+   ],
+   "girl": [
+    {
+     "voice": "ja-JP-NanamiNeural",
+     "pitch": "+6Hz"
+    }
+   ]
+  }
+ }
+}

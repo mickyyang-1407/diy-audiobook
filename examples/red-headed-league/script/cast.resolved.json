@@ -1,0 +1,20 @@
+{
+ "holmes": {
+  "rate": "-8%",
+  "voice": "zh-CN-YunxiNeural",
+  "pitch": "-4Hz"
+ },
+ "narrator": {
+  "rate": "-12%",
+  "voice": "zh-CN-YunyangNeural"
+ },
+ "wilson": {
+  "rate": "-20%",
+  "voice": "zh-CN-YunjianNeural",
+  "pitch": "-12Hz"
+ },
+ "watson": {
+  "rate": "-12%",
+  "voice": "zh-CN-YunyangNeural"
+ }
+}

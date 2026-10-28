@@ -1,0 +1,25 @@
+{
+ "title": "",
+ "author": "",
+ "language": "zh-TW",
+ "source_url": "",
+ "show": "枕邊偵探社",
+ "intro": "",
+ "outro": "",
+ "backend": "edge",
+ "gaps": {
+  "quote": 0.35,
+  "paragraph": 1.5,
+  "scene": 3.5,
+  "after_intro": 2.0,
+  "before_outro": 3.0,
+  "lead_in": 1.0,
+  "tail": 5.0
+ },
+ "music": null,
+ "music_below_lu": 16.5,
+ "duck_ratio": 3,
+ "image": null,
+ "target_lufs": -14.0,
+ "true_peak": -1.5
+}

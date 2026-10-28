@@ -1,0 +1,13 @@
+{
+ "narrator": {
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%"
+ },
+ "watson": "same:narrator",
+ "holmes": {
+  "voice": "zh-CN-YunxiNeural",
+  "pitch": "-4Hz",
+  "rate": "-8%"
+ },
+ "wilson": "pool:man_old"
+}

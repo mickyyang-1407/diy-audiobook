@@ -1,0 +1,15 @@
+{
+ "_doc": "OpenAI gpt-4o-mini-tts. Speaks any language; the `instructions` field does the acting.",
+ "defaults": {"instructions": "Bedtime radio drama. Speak slowly, softly and warmly, with calm pauses. Never shout."},
+ "any": {
+  "narrator": {"voice": "onyx"},
+  "pools": {
+   "man_mid": [{"voice": "ash"}, {"voice": "echo"}], "man_young": [{"voice": "verse"}, {"voice": "echo", "instructions": "A young man, quick but quiet."}],
+   "man_old": [{"voice": "ballad", "instructions": "An elderly gentleman, slow and gravelly, speaking softly."}],
+   "man_rough": [{"voice": "ash", "instructions": "A rough, blunt working man, low voice, never loud."}],
+   "woman_young": [{"voice": "shimmer"}, {"voice": "coral"}], "woman_mid": [{"voice": "nova"}, {"voice": "sage"}],
+   "woman_old": [{"voice": "sage", "instructions": "An elderly woman, slow and kind, soft voice."}],
+   "boy": [{"voice": "fable", "instructions": "A boy of about ten, curious, quiet."}], "girl": [{"voice": "coral", "instructions": "A girl of about ten, soft and curious."}]
+  }
+ }
+}
