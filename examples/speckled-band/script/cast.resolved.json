@@ -1,0 +1,18 @@
+{
+ "holmes": {
+  "rate": "-10%",
+  "voice": "en-GB-ThomasNeural"
+ },
+ "narrator": {
+  "rate": "-12%",
+  "voice": "en-GB-RyanNeural"
+ },
+ "stoner": {
+  "rate": "-10%",
+  "voice": "en-GB-MaisieNeural"
+ },
+ "watson": {
+  "rate": "-12%",
+  "voice": "en-GB-RyanNeural"
+ }
+}

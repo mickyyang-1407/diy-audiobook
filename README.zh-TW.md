@@ -8,7 +8,7 @@
 
 [English](README.md) · [繁體中文](README.zh-TW.md)
 
-🎧 **先聽聽看：**[90 秒示範](examples/red-headed-league/demo-first-90s.m4a)——全部由這個 repo 產生，用免費語音、不需要任何 API key。
+🎧 **先聽聽看**（全部由這個 repo 產生，用免費語音、不需要任何 API key）：[繁體中文〈紅髮會〉](examples/red-headed-league/demo-first-90s.m4a)·[English *The Speckled Band*](examples/speckled-band/demo-first-90s.m4a)
 
 這是 YouTube 頻道 **[枕邊偵探社](https://youtube.com/@PillowMysteries)** 背後的量產線：福爾摩斯、江戶川亂步、布朗神父等經典推理，做成睡前廣播劇，已經做了將近 200 集。這裡的每個預設值（語速、停頓、響度、配樂要多小聲）都是在這些集數裡一集一集用耳朵調出來的。
 

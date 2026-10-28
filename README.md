@@ -9,8 +9,9 @@ under the dialogue, mastered to streaming loudness, with subtitles, chapters and
 
 [English](README.md) · [繁體中文](README.zh-TW.md)
 
-🎧 **Listen:** [90-second demo](examples/red-headed-league/demo-first-90s.m4a) — made entirely by this repo
-with free voices, no API key.
+🎧 **Listen** — made entirely by this repo with free voices, no API key:
+[English · *The Speckled Band*](examples/speckled-band/demo-first-90s.m4a) ·
+[繁體中文 · 〈紅髮會〉](examples/red-headed-league/demo-first-90s.m4a)
 
 This is the production line behind **[枕邊偵探社 (Pillow Detective Agency)](https://youtube.com/@PillowMysteries)**,
 a YouTube channel of Sherlock Holmes and other classic mysteries as bedtime radio dramas — nearly 200 episodes produced.
@@ -60,6 +61,7 @@ python3 scripts/check.py examples/red-headed-league
 python3 scripts/synth.py examples/red-headed-league
 python3 scripts/mix.py   examples/red-headed-league --nomusic
 python3 scripts/qc.py    examples/red-headed-league
+python3 scripts/selftest.py                      # offline: quote parsing, casting, the gate
 ```
 
 ## What you get
@@ -109,7 +111,7 @@ SKILL.md              the instructions Claude Code follows
 scripts/              fetch · check · synth · mix · qc · package (stdlib + ffmpeg; edge-tts for free voices)
 voices/               voice pools per backend and language
 references/           translation guide · speaker tagging rules · lessons from nearly 200 episodes
-examples/             a complete episode folder you can run as-is
+examples/             two complete episode folders (English, 繁體中文) you can run as-is
 ```
 
 ## Contributing
