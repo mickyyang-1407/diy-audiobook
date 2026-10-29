@@ -5,7 +5,9 @@ with music and pictures — by saying one sentence to Claude Code.**
 
 > "Make a children's story of *The Lion and the Mouse* in Traditional Chinese, with pictures and gentle music."
 
-![The Lion and the Mouse — cover made by this repo](examples/lion-and-mouse/cover.jpg)
+<p align="center"><img src="examples/lion-and-mouse/cover-small.jpg" width="520" alt="The Lion and the Mouse — cover made by this repo"></p>
+
+<p align="center"><b><a href="https://mickyyang-1407.github.io/diy-audiobook/">🌐 Website & demos</a></b></p>
 
 …and you get a finished episode: the story adapted for listening, a different voice for every character,
 soft music that ducks under the dialogue, illustrations timed to the story, a video, a cover, subtitles,
@@ -15,9 +17,10 @@ Plug in MiniMax, OpenAI, Suno or your own ComfyUI when you want more.
 [English](README.md) · [繁體中文](README.zh-TW.md)
 
 🎬 **Watch / listen** — every file made by this repo:
-[Kids · 〈獅子與老鼠〉 video](examples/lion-and-mouse/demo.mp4) ·
-[English · *The Speckled Band*](examples/speckled-band/demo-first-90s.m4a) ·
-[繁體中文 · 〈紅髮會〉](examples/red-headed-league/demo-first-90s.m4a)
+[Kids · 〈獅子與老鼠〉 video](docs/assets/lion-and-mouse.mp4) ·
+[English · *The Speckled Band*](docs/assets/speckled-band-90s.m4a) ·
+[繁體中文 · 〈紅髮會〉](docs/assets/red-headed-league-90s.m4a) ·
+or watch them all on the [website](https://mickyyang-1407.github.io/diy-audiobook/)
 
 It started as the production line behind **[枕邊偵探社 (Pillow Detective Agency)](https://youtube.com/@PillowMysteries)**,
 a YouTube channel of Sherlock Holmes and other classic mysteries as bedtime radio dramas — nearly 200 episodes produced.
@@ -119,7 +122,7 @@ scripts/       doctor · fetch · check · synth · music · draw · mix · vide
 voices/        voice pools per backend, language and style
 workflows/     ComfyUI workflow template (bring your own, too)
 references/    translation · speaker tagging · music & Suno · pictures · lessons from nearly 200 episodes
-docs/          API key guides (English, 中文)
+docs/          API key guides (English, 中文) + the website (GitHub Pages)
 examples/      three complete episodes: kids (中文), bedtime (中文), English
 ```
 
