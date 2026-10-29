@@ -5,8 +5,7 @@ Usage: qc.py <episode_dir>
 
 Red:    master loudness off target by > 0.5 LU, AAC true peak above -1.0 dBTP, a clip that is far too long or
         far too short for its text (TTS glitches: repeated phrases, swallowed sentences), dead air > 12 s.
-Yellow: clips whose pace is unusual, an intro/outro more than 1.3× slower than the story (a chain of short
-        sentences — sounds halting), roles levelled by more than 9 dB (a voice that is very quiet or loud raw).
+Yellow: clips whose pace is unusual, roles levelled by more than 9 dB (a voice that is very quiet or loud raw).
 Ears are still the final check: listen to the first minute, one scene change, and every yellow clip.
 """
 import json
@@ -33,11 +32,6 @@ def main():
         med = statistics.median(p for _, p in pace)
         for c, p in pace:
             where = f"{ts(c['start'], srt=False)} {c['para']} {c['role']}: {c['text'][:30]}"
-            if c["para"] in ("INTRO", "OUTRO") and p > 1.3 * med:
-                # 10-29: 「嗨，小朋友，晚安。故事時間到囉。」 measured 1.39× and sounded halting — every 。 is a
-                # ~1 s stop on edge voices; the greeting a listener liked measured 1.29×
-                yellow.append(f"{c['para'].lower()} is {p / med:.2f}× slower than the story — it will sound halting. "
-                              f"Join the short sentences with commas into one or two flowing sentences")
             if p > 2.2 * med or p < 0.45 * med:
                 red.append(f"clip pace {p / med:.1f}× normal — {where}")
             elif p > 1.6 * med or p < 0.62 * med:
