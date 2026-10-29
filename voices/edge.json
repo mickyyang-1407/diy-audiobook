@@ -1,7 +1,7 @@
 {
  "_doc": "Free Microsoft Edge voices (edge-tts). Mandarin has few voices, so pools reuse a voice at a different pitch — each (voice, pitch) pair counts as a separate character, and a base voice nobody is using yet is always picked first. zh-TW-YunJheNeural returns no audio as of 2026-10 and is left out. List every voice: edge-tts --list-voices",
  "defaults": {
-  "rate": "-12%"
+  "rate": "-10%"
  },
  "zh": {
   "narrator": {
@@ -271,6 +271,20 @@
   },
   "ja": {
    "voice": "ja-JP-NanamiNeural"
+  }
+ },
+ "bedtime_narrator": {
+  "zh": {
+   "voice": "zh-CN-YunyangNeural",
+   "rate": "-12%"
+  },
+  "en": {
+   "voice": "en-GB-RyanNeural",
+   "rate": "-12%"
+  },
+  "ja": {
+   "voice": "ja-JP-KeitaNeural",
+   "rate": "-12%"
   }
  }
 }

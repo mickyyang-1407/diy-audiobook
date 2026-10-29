@@ -1,0 +1,14 @@
+{
+ "narrator": {
+  "rate": "-8%",
+  "voice": "zh-TW-HsiaoChenNeural"
+ },
+ "lion": {
+  "rate": "-8%",
+  "voice": "zh-CN-YunjianNeural"
+ },
+ "mouse": {
+  "rate": "-8%",
+  "voice": "zh-CN-YunxiaNeural"
+ }
+}
