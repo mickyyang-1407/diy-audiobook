@@ -5,8 +5,8 @@
  "source_url": "Aesop's fable, retold in Traditional Chinese for this repo (story.txt)",
  "style": "kids",
  "show": "給孩子的有聲書",
- "intro": "嗨，小朋友，晚安。故事時間到囉。今天要說的故事是：獅子與老鼠。",
- "outro": "故事說完了。晚安，做個好夢。",
+ "intro": "晚安，小朋友，今天的睡前故事，是一隻大獅子和一隻小老鼠的故事，故事的名字叫做，獅子與老鼠。",
+ "outro": "故事說完了，晚安，祝你做個香香甜甜的好夢。",
  "backend": "edge",
  "gaps": {
   "quote": 0.35,

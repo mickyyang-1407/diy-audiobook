@@ -62,7 +62,10 @@ python3 $SKILL_DIR/scripts/fetch.py episodes/01-red-headed-league --gutenberg 16
   --start "II. THE RED-HEADED LEAGUE" --end "III. A CASE OF IDENTITY" --style bedtime --language zh-TW
 ```
 Then set in `episode.json`: `intro` / `outro` (a fixed greeting makes it a show), `show`, `hook` (≤7-character
-cover line), `backend`.
+cover line), `backend`. Write the greeting as **one or two flowing sentences joined by commas** — a chain of
+short sentences (「嗨，小朋友，晚安。故事時間到囉。」) sounds halting, because every full stop is a ~1 s stop
+for the voice; avoid chatty interjections (嗨、囉、喔) that TTS reads stiffly. Good:
+「晚安，小朋友，今天的睡前故事，是一隻大獅子和一隻小老鼠的故事，故事的名字叫做，獅子與老鼠。」
 
 ## 3. Script → `script/script.json`
 
