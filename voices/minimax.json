@@ -148,5 +148,14 @@
  },
  "audiobook_defaults": {
   "speed": 1.0
+ },
+ "kids_defaults": {
+  "speed": 0.9
+ },
+ "kids_narrator": {
+  "zh": {
+   "voice": "Chinese (Mandarin)_Wise_Women",
+   "emotion": "calm"
+  }
  }
 }

@@ -1,0 +1,94 @@
+{
+ "_doc": "ComfyUI API graph for Qwen-Image 2.1 (from ComfyUI's official Qwen-Image-2.1 T2I template; get the three model files via that template). Follows plain-English scene descriptions very well; ignores the negative prompt at cfg 1, so write exclusions into the prompt. ~2 min per 1344x768 picture on an M3 Ultra.",
+ "1": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "qwen_image_2.1_bf16.safetensors",
+   "weight_dtype": "default"
+  }
+ },
+ "2": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "qwen3vl_8b_bf16_qwen_image_2.1.safetensors",
+   "type": "qwen_image",
+   "device": "default"
+  }
+ },
+ "3": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+  }
+ },
+ "4": {
+  "class_type": "TextEncodeQwenImage21",
+  "inputs": {
+   "clip": [
+    "2",
+    0
+   ],
+   "prompt": "{{PROMPT}}",
+   "negative_prompt": "{{NEGATIVE}}",
+   "resolution": 1024
+  }
+ },
+ "6": {
+  "class_type": "KSampler",
+  "inputs": {
+   "model": [
+    "1",
+    0
+   ],
+   "positive": [
+    "4",
+    0
+   ],
+   "negative": [
+    "4",
+    1
+   ],
+   "seed": "{{SEED}}",
+   "steps": 25,
+   "cfg": 1.0,
+   "sampler_name": "euler",
+   "scheduler": "simple",
+   "denoise": 1.0,
+   "latent_image": [
+    "5",
+    0
+   ]
+  }
+ },
+ "7": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "6",
+    0
+   ],
+   "vae": [
+    "3",
+    0
+   ]
+  }
+ },
+ "8": {
+  "class_type": "SaveImage",
+  "inputs": {
+   "images": [
+    "7",
+    0
+   ],
+   "filename_prefix": "pipeline/qwen21"
+  }
+ },
+ "5": {
+  "class_type": "EmptyLatentImage",
+  "inputs": {
+   "width": "{{WIDTH}}",
+   "height": "{{HEIGHT}}",
+   "batch_size": 1
+  }
+ }
+}

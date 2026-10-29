@@ -1,0 +1,31 @@
+{
+ "style": "A full-page children's picture book illustration (the whole frame is the scene, no book or page visible): soft watercolor and colored pencil, warm gentle light, pastel colors, cute rounded animals, cozy and calm.",
+ "negative": "text, letters, words, watermark, signature, a book, pages, frames, scary, blood, sharp teeth, humans, photo, 3d render, extra animals",
+ "images": [
+  {
+   "id": "01",
+   "at": "P001",
+   "prompt": "a big friendly lion with a fluffy golden mane and kind amber eyes, alone, sleeping peacefully under a big shady acacia tree on a sunny golden savanna at midday; no other animals anywhere"
+  },
+  {
+   "id": "02",
+   "at": "P003",
+   "prompt": "a big friendly lion with a fluffy golden mane and kind amber eyes lying on the grass, gently holding a tiny grey mouse with big round pink ears and a long thin tail under one big soft paw, the mouse looking up worried, the lion curious"
+  },
+  {
+   "id": "03",
+   "at": "P007",
+   "prompt": "a big friendly lion with a fluffy golden mane and kind amber eyes, alone, caught inside a big rope net hanging between trees in a green forest, tangled, sad expression, dappled sunlight; the lion is the only animal in the picture"
+  },
+  {
+   "id": "04",
+   "at": "P011",
+   "prompt": "close-up of a tiny grey mouse with big round pink ears and a long thin tail standing on a thick rope net, nibbling through a rope with its tiny teeth, determined, forest background"
+  },
+  {
+   "id": "05",
+   "at": "P013",
+   "prompt": "a big friendly lion with a fluffy golden mane and kind amber eyes and a tiny grey mouse with big round pink ears and a long thin tail, just the two of them, napping together side by side under a big shady tree, the mouse curled up next to the lion's mane, peaceful golden afternoon light; no other animals"
+  }
+ ]
+}

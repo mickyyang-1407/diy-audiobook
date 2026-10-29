@@ -11,8 +11,11 @@ def preset(backend, language, style="bedtime"):
     lang = language.split("-")[0].lower()
     block = p.get(lang) or p.get("any")
     defaults = p.get("defaults", {})
-    if style == "audiobook":
-        defaults = {**defaults, **p.get("audiobook_defaults", {})}
+    if style in ("audiobook", "kids"):
+        defaults = {**defaults, **p.get(f"{style}_defaults", {})}
+    kn = p.get(f"{style}_narrator", {}).get(lang) or p.get(f"{style}_narrator", {}).get("any")
+    if kn and block:
+        block = {**block, "narrator": kn}
     if not block:
         raise CastError(f"voices/{backend}.json has no preset for {language!r}; add one, or name every voice in "
                         f"cast.json explicitly")

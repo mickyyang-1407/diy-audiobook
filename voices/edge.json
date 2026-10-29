@@ -258,5 +258,19 @@
  },
  "audiobook_defaults": {
   "rate": "+0%"
+ },
+ "kids_defaults": {
+  "rate": "-8%"
+ },
+ "kids_narrator": {
+  "zh": {
+   "voice": "zh-TW-HsiaoChenNeural"
+  },
+  "en": {
+   "voice": "en-US-JennyNeural"
+  },
+  "ja": {
+   "voice": "ja-JP-NanamiNeural"
+  }
  }
 }

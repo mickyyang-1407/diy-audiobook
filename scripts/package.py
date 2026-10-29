@@ -14,6 +14,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import Episode, load, ts  # noqa: E402
 
 CREDIT = {"edge": "Microsoft Edge neural voices", "minimax": "MiniMax speech", "openai": "OpenAI text-to-speech"}
+ZH = {"Microsoft Edge neural voices": "微軟 Edge 神經語音", "MiniMax speech": "MiniMax 語音",
+      "OpenAI text-to-speech": "OpenAI 語音", "generated locally with ComfyUI": "本機 ComfyUI 以 AI 生成",
+      "generated with OpenAI image models": "OpenAI 以 AI 生成", "generated with MiniMax image-01": "MiniMax 以 AI 生成",
+      "supplied by the producer": "製作者提供"}
 
 
 def main():
@@ -22,6 +26,7 @@ def main():
     rows = {r["id"]: r for r in load(ep.script)}
     tl = load(ep.build / "timeline.json")
     zh = cfg.get("language", "").startswith("zh")
+    loc = (lambda t: ZH.get(t, t)) if zh else (lambda t: t)
     chapters, seen = [(0.0, "開場" if zh else "Opening")], set()
     for c in tl:
         s = c["scene"]
@@ -44,10 +49,16 @@ def main():
         lines += [f"{cfg.get('title', '')} by {cfg.get('author', '')}, as a multi-voice bedtime radio drama.", ""]
     if ok:
         lines += [f"{ts(t, srt=False)} {name}" for t, name in chapters] + [""]
+    if cfg.get("style") == "kids" and zh:
+        lines[2] = f"{cfg.get('author', '')}〈{cfg.get('title', '')}〉，給孩子的多角色有聲故事。"
+    elif cfg.get("style") == "kids":
+        lines[2] = f"{cfg.get('title', '')} — a multi-voice story for children."
     src = cfg.get("source_url", "")
     lines += ["原著為公有領域作品" + (f"：{src}" if src.startswith("http") else "") if zh
               else "Original text in the public domain" + (f": {src}" if src.startswith("http") else ""),
-              ("語音：" if zh else "Voices: ") + CREDIT.get(cfg["backend"], cfg["backend"]),
+              ("語音：" if zh else "Voices: ") + loc(CREDIT.get(cfg["backend"], cfg["backend"])),
+              *([("插圖：" if zh else "Illustrations: ") + loc(cfg["art"]["credit"])] if (cfg.get("art") or {}).get("credit") else []),
+              *([("配樂：" if zh else "Music: ") + cfg["music_credit"]] if cfg.get("music_credit") else []),
               ("製作流程：" if zh else "Made with ") + "diy-audiobook (Claude Code skill)"]
     out = ep.build / "description.md"
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")

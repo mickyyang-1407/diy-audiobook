@@ -84,6 +84,40 @@ if gate(lambda ep: None) != 0:
 if gate(edit("script/script.json", lambda d, ep: d[11].update(text=d[11]["text"][:60] + "」", allow_short=True))):
     fails.append("gate: allow_short escape hatch did not work")
 
+# ---- pictures: manual mode must name the missing files ----
+with tempfile.TemporaryDirectory() as d:
+    ep = Path(d) / "ep"
+    shutil.copytree(EXAMPLE, ep, ignore=shutil.ignore_patterns("build", "*.m4a"))
+    (ep / "art").mkdir()
+    (ep / "art/prompts.json").write_text(json.dumps({"style": "x", "images": [
+        {"id": "01", "at": "P001", "prompt": "a"}, {"id": "02", "at": "P013", "prompt": "b"}]}))
+    (ep / "art/01.png").write_bytes(b"x")
+    r = subprocess.run([sys.executable, str(HERE / "draw.py"), str(ep)], capture_output=True, text=True)
+    if r.returncode == 0 or "02.png" not in r.stderr or "01.png" in r.stderr:
+        fails.append(f"draw manual: expected to ask for 02.png only, got {r.returncode} {r.stderr.strip()[:120]}")
+
+# ---- music: generated lullaby passes the held-chord check, a frozen chord fails it ----
+try:
+    import numpy as np
+    import wave
+    with tempfile.TemporaryDirectory() as d:
+        good, bad = Path(d) / "good.wav", Path(d) / "bad.wav"
+        subprocess.run([sys.executable, str(HERE / "music.py"), "make", str(good), "--minutes", "1.5"],
+                       capture_output=True, check=True)
+        t = np.arange(int(44100 * 90)) / 44100
+        y = sum(np.sin(2 * np.pi * f * t) for f in (220, 277.2, 329.6)) * 0.2
+        with wave.open(str(bad), "wb") as w:
+            w.setnchannels(1); w.setsampwidth(2); w.setframerate(44100)
+            w.writeframes((y * 32767).astype("<i2").tobytes())
+        ck = lambda p: subprocess.run([sys.executable, str(HERE / "music.py"), "check", str(p)],
+                                      capture_output=True).returncode
+        if ck(good) != 0:
+            fails.append("music check: generated lullaby was flagged")
+        if ck(bad) == 0:
+            fails.append("music check: a 90 s frozen chord was not flagged")
+except ImportError:
+    print("(numpy not installed — music checks skipped)")
+
 for f in fails:
     print("FAIL", f)
 print("selftest OK" if not fails else f"selftest FAILED ({len(fails)})")

@@ -72,8 +72,8 @@ def main():
     ap.add_argument("--start"); ap.add_argument("--end")
     ap.add_argument("--title", default=""); ap.add_argument("--author", default="")
     ap.add_argument("--language", default="zh-TW", help="language of the finished drama (BCP-47)")
-    ap.add_argument("--style", choices=["bedtime", "audiobook"], default="bedtime",
-                    help="bedtime = slow, long pauses (default); audiobook = natural pace")
+    ap.add_argument("--style", choices=["bedtime", "audiobook", "kids"], default="bedtime",
+                    help="bedtime = slow, long pauses (default); audiobook = natural pace; kids = warm storyteller")
     ap.add_argument("--max-paragraphs", type=int, default=0, help="keep only the first N (for a short demo)")
     a = ap.parse_args()
 
@@ -82,7 +82,7 @@ def main():
     elif a.url:
         url = a.url; raw = get(url)
     else:
-        url = str(Path(a.file).resolve()); raw = Path(a.file).read_text(encoding="utf-8-sig")
+        url = Path(a.file).name; raw = Path(a.file).read_text(encoding="utf-8-sig")
     paras = paragraphs(cut(strip_gutenberg(raw), a.start, a.end))
     if a.max_paragraphs:
         paras = paras[:a.max_paragraphs]
@@ -99,13 +99,17 @@ def main():
     if a.style == "audiobook":
         cfg["style"] = "audiobook"
         cfg["gaps"] = {**cfg["gaps"], "paragraph": 0.9, "scene": 2.5, "after_intro": 1.5, "before_outro": 2.0}
+    elif a.style == "kids":
+        cfg["style"] = "kids"
+        cfg["gaps"] = {**cfg["gaps"], "paragraph": 1.2, "scene": 3.0}
     if a.title:
         cfg["title"] = a.title
     if a.author:
         cfg["author"] = a.author
     save(cfg_path, cfg)
-    words = sum(len(p.split()) for p in paras)
-    print(f"{ep}: {len(rows)} paragraphs, ~{words} words → source/source.json; edit episode.json next")
+    cjk = sum(len(re.findall(r"[\u3040-\u30ff\u3400-\u9fff]", p)) for p in paras)
+    size = f"{cjk} characters" if cjk > sum(len(p.split()) for p in paras) else f"~{sum(len(p.split()) for p in paras)} words"
+    print(f"{ep}: {len(rows)} paragraphs, {size} → source/source.json; edit episode.json next")
 
 
 if __name__ == "__main__":

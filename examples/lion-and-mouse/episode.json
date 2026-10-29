@@ -1,0 +1,36 @@
+{
+ "title": "獅子與老鼠",
+ "author": "伊索寓言（改寫）",
+ "language": "zh-TW",
+ "source_url": "Aesop's fable, retold in Traditional Chinese for this repo (story.txt)",
+ "style": "kids",
+ "show": "給孩子的有聲書",
+ "intro": "嗨，小朋友，晚安。故事時間到囉。今天要說的故事是：獅子與老鼠。",
+ "outro": "故事說完了。晚安，做個好夢。",
+ "backend": "edge",
+ "gaps": {
+  "quote": 0.35,
+  "paragraph": 1.2,
+  "scene": 3.0,
+  "after_intro": 2.0,
+  "before_outro": 3.0,
+  "lead_in": 1.0,
+  "tail": 5.0
+ },
+ "music": "music",
+ "music_below_lu": 16.5,
+ "duck_ratio": 3,
+ "image": null,
+ "target_lufs": -14.0,
+ "true_peak": -1.5,
+ "hook": "再小也能幫大忙",
+ "art": {
+  "backend": "comfyui",
+  "workflow": "workflows/comfyui-qwen-image-2.1.json",
+  "size": "1344x768",
+  "seed": 2026,
+  "timeout_s": 900,
+  "credit": "generated locally with ComfyUI"
+ },
+ "music_credit": "原創音樂盒搖籃曲（music.py 生成）"
+}

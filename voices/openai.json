@@ -75,5 +75,13 @@
  },
  "audiobook_defaults": {
   "instructions": "Audiobook narration. Clear, natural pace; expressive but never theatrical."
+ },
+ "kids_defaults": {
+  "instructions": "A warm storyteller reading to young children at bedtime. Gentle, smiling, unhurried; clear words; playful for animals and children, never scary."
+ },
+ "kids_narrator": {
+  "any": {
+   "voice": "nova"
+  }
  }
 }
